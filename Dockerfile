@@ -1,5 +1,5 @@
 FROM fluent/fluentd:edge-debian-armhf
-MAINTAINER YOUR_NAME <bc@beckonconn.com>
+MAINTAINER Brad Cesarone <bc@beckonconn.com>
 
 # Use root account to use apk
 USER root
@@ -15,5 +15,7 @@ RUN buildDeps="sudo make gcc g++ libc-dev" \
                   $buildDeps \
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /tmp/* /var/tmp/* /usr/lib/ruby/gems/*/cache/*.gem
+
+COPY fleunt.conf /fluentd/etc/
 
 USER fluent
