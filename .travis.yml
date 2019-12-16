@@ -10,3 +10,14 @@ script:
 - docker build -t beckonconn/fluentd-docker-arm:build .
 # Test for container architecture
 - docker run -it --rm beckonconn/fluentd-docker-arm:build uname -a
+
+# push image
+- >
+  if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
+    #TAG=$(grep "FROM " Dockerfile | sed 's/.*://')
+    #docker tag beckonconn/fluentd-docker-arm:build fluentd-docker-arm:$TAG
+    docker tag beckonconn/fluentd-docker-arm:build beckonconn/fluentd-docker-arm:latest
+    #docker push beckonconn/fluentd-docker-arm:$TAG
+    docker push beckonconn/fluentd-docker-arm:latest
+  fi
