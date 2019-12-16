@@ -8,3 +8,5 @@ script:
 - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # Build the container
 - docker build -t beckonconn/fluentd-docker-arm:build .
+# Test for container architecture
+- docker run -rm beckonconn/fluentd-docker-arm:build uname -a
