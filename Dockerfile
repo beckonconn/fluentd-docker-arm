@@ -1,4 +1,4 @@
-FROM fluent/fluentd:v1.7-armhf/debian-1
+FROM fluent/fluentd:v1.8-debian-armhf-1
 MAINTAINER YOUR_NAME <bc@beckonconn.com>
 
 # Use root account to use apk
